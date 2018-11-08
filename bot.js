@@ -2,9 +2,11 @@ const Discord = require("discord.js");
 const client = new Discord.client();
 
 client.on('ready', () => {
-    console.log('i`m Ready');
-       client.user.setActivity( `RezfixHost.com ` { type: 'WATCHING' });
-});
+    client.user.setGame('Rezfix -help','https://www.twitch.tv/Rezfix');
+    console.log('---------------');
+    console.log(' Bot Is Online')
+    console.log('---------------')
+  });
 
 clinet.on('message', message => {
     if (message.content.startsWith("رابط")) {
