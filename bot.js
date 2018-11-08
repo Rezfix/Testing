@@ -9,7 +9,7 @@ client.on('ready', () => {
   });
 
 client.on('message', msg => {
-    if (message.content.startsWith("رابط")) {
+if (message.content.startsWith('رابط')){
 
         message.channel.createInvite({
         thing: true,
