@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.client();
 
 client.on('ready', () => {
-    console.log("i'm Ready");
+    console.log('i'm Ready');
     client.user.setActivity('https://RezfixHost.com', { type: 'WATCHING' });
 });
 
