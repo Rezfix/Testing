@@ -53,21 +53,32 @@ if(command == prefix + 'bc') { // الكوماند !bc
 }
 });
 
-clinet.on('message', ra3d => {
-    var prefix = "#";
-                            let args = ra3d.content.split(" ").slice(1).join(" ")
-    if(ra3d.content.startsWith('#cc')) {
-        if(!args) return ra3d.channel.send('`يرجي اختيار كم لون `');
-                 if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**'); 
-                  ra3d.channel.send(`**✅ |Created __${args}__ Colors**`);
-                      setInterval(function(){})
-                        let count = 0;
-                        let ecount = 0;
-              for(let x = 1; x < `${parseInt(args)+1}`; x++){
-                ra3d.guild.createRole({name:x,
-                  color: 'RANDOM'})
-                  }
-                }
-           });
+var prefix = "!";
+client.on("message", function(message) {
+    let toBan = message.mentions.users.first();
+    let toReason = message.content.split(" ").slice(2).join(" ");
+    let toEmbed = new Discord.RichEmbed()
+   if(message.content.startsWith(prefix + "ban")) {
+       if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("**# - انت لا تملك الصلاحيات الكامله للباند!**");
+       if(!toBan) return message.reply("**# - منشن شخص!**");
+       if(toBan.id === ("447121312960479242")) return message.reply("**# You cannot ban me!**");
+       if(toBan === message.member.guild.owner) return message.reply("**# You cannot ban the owner of the server!**");
+       if(toBan.bannable) return message.reply("لايمكنني طرد شخص اعلى من رتبتي");
+       if(!toReason) return message.reply("اكتب سبب الباند");
+       if(toBan.id === message.author.id) return message.reply("**# You cannot ban yourself!**")
+       if(!message.guild.member(toBan).bannable) return message.reply("**# - I cannot ban this person!**")
+       let toEmbed;
+       toEmbed = new Discord.RichEmbed()
+       .setTitle("You have been banned from a server!")
+       .setThumbnail(toBan.avatarURL)
+       .addField("**# - Server:**",message.guild.name,true)
+       .addField("**# - Reason:**",toReason,true)
+       .addField("**# - Banned By:**",message.author,true)
+       if(message.member.hasPermission("BAN_MEMBERS")) return (
+           toBan.sendMessage({embed: toEmbed}).then(() => message.guild.member(toBan).ban({reason: toReason})).then(() => message.channel.send(`**# Done! I banned: ${toBan}**`))
+       );
+       
+   }
+});
 
 client.login(process.env.BOT_TOKEN);
