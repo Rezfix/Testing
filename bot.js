@@ -8,7 +8,7 @@ client.on('ready', () => {
     console.log('---------------')
   });
 
-clinet.on('message', message => {
+client.on('message', msg => {
     if (message.content.startsWith("رابط")) {
 
         message.channel.createInvite({
