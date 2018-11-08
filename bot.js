@@ -85,4 +85,103 @@ client.on('guildMemberAdd', (member) => {
 member.addRole(member.guild.roles.find('name', '· RZ · Member # ·'));
 });
 
+client.on("message", message => {
+  if (message.author.bot) return;
+  
+  let command = message.content.split(" ")[0];
+  
+  if (command === "$mute") {
+        if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
+  let user = message.mentions.users.first();
+  let modlog = client.channels.find('name', 'log');
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+  if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").catch(console.error);
+  if (message.mentions.users.size < 1) return message.reply('** يجب عليك منشنت شخص اولاً**').catch(console.error);
+  
+  const embed = new Discord.RichEmbed()
+    .setColor(0x00AE86)
+    .setTimestamp()
+    .addField('الأستعمال:', 'اسكت/احكي')
+    .addField('تم ميوت:', `${user.username}#${user.discriminator} (${user.id})`)
+    .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
+   
+   if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
+ 
+  if (message.guild.member(user).roles.has(muteRole.id)) {
+return message.reply("**:white_check_mark: .. تم اعطاء العضو ميوت**").catch(console.error);
+} else {
+    message.guild.member(user).addRole(muteRole).then(() => {
+return message.reply("**:white_check_mark: .. تم اعطاء العضو ميوت كتابي**").catch(console.error);
+});
+  }
+
+};
+
+});
+
+   client.on("message", message => {
+  if (message.author.bot) return;
+  
+  let command = message.content.split(" ")[0];
+  
+  if (command === "$unmute") {
+        if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
+  let user = message.mentions.users.first();
+  let modlog = client.channels.find('name', 'log');
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+  if (!muteRole) return message.reply("** لا يوجد لديك رتبه الميوت 'Muted' **").catch(console.error);
+  if (message.mentions.users.size < 1) return message.reply('** يجب عليك منشنت شخص اولاً**').catch(console.error);
+  const embed = new Discord.RichEmbed()
+    .setColor(0x00AE86)
+    .setTimestamp()
+    .addField('الأستعمال:', 'اسكت/احكي')
+    .addField('تم فك الميوت عن:', `${user.username}#${user.discriminator} (${user.id})`)
+    .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
+
+  if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
+
+  if (message.guild.member(user).removeRole(muteRole.id)) {
+return message.reply("**:white_check_mark: .. تم فك الميوت عن الشخص **").catch(console.error);
+} else {
+    message.guild.member(user).removeRole(muteRole).then(() => {
+return message.reply("**:white_check_mark: .. تم فك الميوت عن الشخص **").catch(console.error);
+});
+  }
+
+};
+
+});
+
+client.on("message", message => {
+              var args = message.content.substring(prefix.length).split(" ");
+              if (message.content.startsWith(prefix + "clear")) {
+                  if(!message.channel.guild) return message.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
+          var msg;
+          msg = parseInt();
+        
+        message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+        message.channel.sendMessage("", {embed: {
+          title: "``تــم مسح الشات ``",
+          color: 0x06DF00,
+          footer: {
+            
+          }
+        }}).then(msg => {msg.delete(10000)});
+                            }
+  
+       
+  });
+
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const yumz = member.guild.channels.find("name", "welcome");
+     yumz.send(`<@${member.user.id}> joined by <@${inviter.id}>`);
+   //  yumz.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
+  }); 
+});
+
 client.login(process.env.BOT_TOKEN);
