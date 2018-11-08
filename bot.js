@@ -8,25 +8,12 @@ client.on('ready', () => {
     console.log('---------------')
   });
 
-client.on('message', msg => {
-if (message.content.startsWith('رابط')){
-
-        message.channel.createInvite({
-        thing: true,
-        maxUses: 5,
-         maxAge: 86400
-    }).then(invite =>
-      message.author.sendMessage(invite.url)
-    )
-    const embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .setDescription("تم الارسال على الخاص | 🔗")
-      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
-              const Embed11 = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .setDescription("This link will stay with you 1 hours 🔗")
-      message.author.sendEmbed(Embed11)
-    }
-}); 
+client.on('message', message => {
+    if (message.content.startsWith("+bans")) {
+        message.guild.fetchBans()
+        .then(bans => message.channel.send(`${bans.size} عدد اشخاص المبندة من السيرفر `))
+  .catch(console.error);
+}
+});
 
 client.login(process.env.BOT_TOKEN);
