@@ -350,4 +350,10 @@ he tru to hake the server${channel.guild.name}`)
   },Otime)
   });
 
+  client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(` welcome to server ${member} `) 
+}).catch(console.error)
+})
+
 client.login(process.env.BOT_TOKEN);
