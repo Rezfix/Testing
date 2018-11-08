@@ -3,7 +3,7 @@ const client = new Discord.client();
 
 client.on('ready', () => {
     console.log('i`m Ready');
-       client.user.setActivity( `https://RezfixHost.com ` { type: 'WATCHING' });
+       client.user.setActivity( `RezfixHost.com ` { type: 'WATCHING' });
 });
 
 clinet.on('message', message => {
