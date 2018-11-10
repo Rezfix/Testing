@@ -381,7 +381,7 @@ client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezf");
 client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezfi");
 client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezfix");
 client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezfix Ser");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To legend Server 」");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezfix Server 」");
   }, 3000);
 });
  
