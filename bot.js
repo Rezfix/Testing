@@ -366,5 +366,23 @@ message.channel.send(`${user} has ${inviteCount} invites.`);
 });
   }
 });
+
+client.on("ready", async  => {
+setInterval(function(){
+client.channels.find('id', '510719322658963456').setName("「");
+client.channels.find('id', '510719322658963456').setName("「 Wel");
+client.channels.find('id', '510719322658963456').setName("「 Welco");
+client.channels.find('id', '510719322658963456').setName("「 Welcome");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To L");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To Le");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To Leg");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To lege");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To legen");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To legend");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To legend Net");
+client.channels.find('id', '510719322658963456').setName("「 Welcome To legend NetWork 」");
+  }, 3000);
+});
  
 client.login(process.env.BOT_TOKEN);
