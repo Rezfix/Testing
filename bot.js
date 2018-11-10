@@ -380,7 +380,7 @@ client.channels.find('id', '510719322658963456').setName("Rezfix Se");
 client.channels.find('id', '510719322658963456').setName("Rezfix Ser");
 client.channels.find('id', '510719322658963456').setName("Rezfix Serv");
 client.channels.find('id', '510719322658963456').setName("Rezfix Serve");
-client.channels.find('id', '510719322658963456').setName("Rezfux Server");
+client.channels.find('id', '510719322658963456').setName("Rezfix Server");
   }, 3000);
 });
  
