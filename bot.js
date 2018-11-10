@@ -379,7 +379,6 @@ client.on('ready', () => {
       invites[g.id] = guildInvites;
     });
   });
-});
 
 client.on('guildMemberAdd', member => {
   member.guild.fetchInvites().then(guildInvites => {
