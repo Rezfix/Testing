@@ -369,19 +369,18 @@ message.channel.send(`${user} has ${inviteCount} invites.`);
 
 client.on("ready", async  => {
 setInterval(function(){
-client.channels.find('id', '510719322658963456').setName("「");
-client.channels.find('id', '510719322658963456').setName("「 Wel");
-client.channels.find('id', '510719322658963456').setName("「 Welco");
-client.channels.find('id', '510719322658963456').setName("「 Welcome");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To R");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To Re");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To Rez");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezf");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezfi");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezfix");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezfix Ser");
-client.channels.find('id', '510719322658963456').setName("「 Welcome To Rezfix Server 」");
+client.channels.find('id', '510719322658963456').setName("R");
+client.channels.find('id', '510719322658963456').setName("Re");
+client.channels.find('id', '510719322658963456').setName("Rez");
+client.channels.find('id', '510719322658963456').setName("Rezf");
+client.channels.find('id', '510719322658963456').setName("Rezfi");
+client.channels.find('id', '510719322658963456').setName("Rezfix");
+client.channels.find('id', '510719322658963456').setName("Rezfix S");
+client.channels.find('id', '510719322658963456').setName("Rezfix Se");
+client.channels.find('id', '510719322658963456').setName("Rezfix Ser");
+client.channels.find('id', '510719322658963456').setName("Rezfix Serv");
+client.channels.find('id', '510719322658963456').setName("Rezfix Serve");
+client.channels.find('id', '510719322658963456').setName("Rezfux Server");
   }, 3000);
 });
  
