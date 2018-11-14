@@ -4,7 +4,7 @@ const client = new Discord.Client();
 client.on('ready', () => {
     client.user.setGame('Rezfix Server','https://www.twitch.tv/Rezfix');
     console.log('---------------');
-    console.log(' Rezfix Is Online')
+    console.log(' RZ Is Online')
     console.log('---------------')
   });
 
@@ -82,7 +82,7 @@ client.on("message", function(message) {
 });
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', '· RZ · Member # ·'));
+member.addRole(member.guild.roles.find('name', '· RZ · Normal  ·'));
 });
 
 client.on("message", message => {
