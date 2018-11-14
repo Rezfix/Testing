@@ -603,6 +603,5 @@ if(c) return c.send(`:no_entry: | Banned ${member} , Reason: \`AntiBots - Protec
 }
 });
 
-//ِ. Àymmaann ~ $#9813
  
 client.login(process.env.BOT_TOKEN);
