@@ -298,7 +298,7 @@ client.on("message", (message) => {
 })
 
   client.on('channelCreate', async (channel) => {
-  const rebellog = client.channels.find("name", "log"),
+  const rebellog = client.channels.find("name", "log-hack"),
   Oguild = channel.guild,
   Onumber = 3,
   Otime = 10000;
@@ -325,7 +325,7 @@ channel.guild.owner.send(`<@!${channelcreate.id}>
 
 let channelr = {};
   client.on('channelDelete', async (channel) => {
-  const rebellog = client.channels.find("name", "log"),
+  const rebellog = client.channels.find("name", "log-hack"),
   Oguild = channel.guild,
   Onumber = 3,
   Otime = 10000;
@@ -352,7 +352,7 @@ he tru to hake the server${channel.guild.name}`)
 
   client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
-  return channel.send(` welcome to server ${member} `) 
+  return channel.send(` **Welcome to Rezfix Server.** `) 
 }).catch(console.error)
 })
 
@@ -404,8 +404,8 @@ client.on('guildMemberAdd', member => {
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "welcome");
-    logChannel.send(`Invited by: <@${inviter.id}>`);
+    const logChannel = member.guild.channels.find(channel => channel.name === "chat");
+    logChannel.send(`By: <@${inviter.id}>`);
   });
 });
 
