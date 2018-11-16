@@ -82,7 +82,7 @@ client.on("message", function(message) {
 });
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', '· RZ · Normal  ·'));
+member.addRole(member.guild.roles.find('name', '✱ | RZ · Normal'));
 });
 
 client.on("message", message => {
