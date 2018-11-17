@@ -4,7 +4,7 @@ const client = new Discord.Client();
 client.on('ready', () => {
     client.user.setGame('Reloum Bot.!','https://www.twitch.tv/RezfixServer');
     console.log('---------------');
-    console.log('!!. Online')
+    console.log('Reloum Ready')
     console.log('---------------')
   });
 
