@@ -4,7 +4,7 @@ const client = new Discord.Client();
 client.on('ready', () => {
     client.user.setGame('Reloum Bot.!','https://www.twitch.tv/Reloum');
     console.log('---------------');
-    console.log('Bot Is Online')
+    console.log('Rulom. Is Online')
     console.log('---------------')
   });
 
