@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    client.user.setGame('Reloum Bot.!','https://www.twitch.tv/RezfixServer');
+    client.user.setGame('Reloum Bot.!','https://www.twitch.tv/Reloum');
     console.log('---------------');
     console.log('Reloum Ready')
     console.log('---------------')
@@ -93,7 +93,7 @@ client.on('message', message => {
 });
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', '✱ | RZ · Normal'));
+member.addRole(member.guild.roles.find('name', 'Reloum.'));
 });
 
 client.on("message", message => {
