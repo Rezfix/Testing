@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    client.user.setGame('-help','https://www.twitch.tv/RezfixServer');
+    client.user.setGame('RezfixServer -Help for Help','https://www.twitch.tv/RezfixServer');
     console.log('---------------');
     console.log('!!. Online')
     console.log('---------------')
@@ -162,7 +162,7 @@ return message.reply("**:white_check_mark: .. تم فك الميوت عن الش
 };
 
 });
-
+var prefix = "-";
 client.on("message", message => {
               var args = message.content.substring(prefix.length).split(" ");
               if (message.content.startsWith(prefix + "clear")) {
@@ -328,24 +328,6 @@ message.channel.send(`${user} has ${inviteCount} invites.`);
   }
 });
 
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '510719322658963456').setName("▸ RezfixServer.. 🌊");
-client.channels.find('id', '510719322658963456').setName("▸ R");
-client.channels.find('id', '510719322658963456').setName("▸ Re");
-client.channels.find('id', '510719322658963456').setName("▸ Rez");
-client.channels.find('id', '510719322658963456').setName("▸ Rezf");
-client.channels.find('id', '510719322658963456').setName("▸ Rezfi");
-client.channels.find('id', '510719322658963456').setName("▸ Rezfix");
-client.channels.find('id', '510719322658963456').setName("▸ RezfixS");
-client.channels.find('id', '510719322658963456').setName("▸ RezfixSe");
-client.channels.find('id', '510719322658963456').setName("▸ RezfixSer");
-client.channels.find('id', '510719322658963456').setName("▸ RezfixServ");
-client.channels.find('id', '510719322658963456').setName("▸ RezfixServe");
-client.channels.find('id', '510719322658963456').setName("▸ RezfixServer.. 🌊");
-  }, 3000);
-});
-
 const invites = {};
 
 const wait = require('util').promisify(setTimeout);
@@ -371,6 +353,36 @@ client.on('guildMemberAdd', member => {
   });
 });
 
+    client.on('message', ra3d => {
+      var prefix = "-";
+                              let args = ra3d.content.split(" ").slice(1).join(" ")
+      if(ra3d.content.startsWith(prefix + 'ccolors')) {
+          if(!args) return ra3d.channel.send('`يرجي اختيار كم لون `');
+                   if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**'); 
+                    ra3d.channel.send(`**✅ |Created __${args}__ Colors**`);
+                        setInterval(function(){})
+                          let count = 0;
+                          let ecount = 0;
+                for(let x = 1; x < `${parseInt(args)+1}`; x++){
+                  ra3d.guild.createRole({name:x,
+                    color: 'RANDOM'})
+                    }
+                  }
+             });
+
+    client.on("message", message => {
+    var prefix = "-"
+    if (!message.content.startsWith(prefix)) return;
+      let command = message.content.split(" ")[0];
+      command = command.slice(prefix.length);
+        if(command === "skin") {
+                const args = message.content.split(" ").slice(1).join(" ")
+        if (!args) return message.channel.send("** Type your skin name **");
+        const image = new Discord.Attachment(`https://visage.surgeplay.com/full/256/${args}`, "skin.png");
+    message.channel.send(image)
+        }
+    });
+    
 client.on("message", message => {
 	var prefix = "-";
  if (message.content === "-help") {
@@ -479,126 +491,26 @@ client.on('message', message => {
 }
 });
 
-client.on("message", msg => {
-  if(msg.content === '-' + "id") {
-      const embed = new Discord.RichEmbed();
-  embed.addField("🔱| اسم الحساب :", `${msg.author.username}#${msg.author.discriminator}`, true)
-          .addField("🆔| الاي دي :", `${msg.author.id}`, true)
-          .setColor("RANDOM")
-          .setFooter(msg.author.username , msg.author.avatarURL)
-          .setThumbnail(`${msg.author.avatarURL}`)
-          .setTimestamp()
-          .setURL(`${msg.author.avatarURL}`)
-          .addField('📛| الحالة :', `${msg.author.presence.status.toUpperCase()}`, true)
-          .addField('🎲| بلاينج :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
-          .addField('🏅| الرتب : ', `${msg.member.roles.filter(r => r.name).size}`, true)
-          .addField('📅| تم الانضمام للديسكورد في :', `${msg.createdAt}`,true)
-          .addField('🤖| هل هو بوت ؟', `${msg.author.bot.toString().toUpperCase()}`, true);
-      msg.channel.send({embed: embed})
-  }
-
-  client.on("message", message => {
-    var prefix = "-"
-    if (!message.content.startsWith(prefix)) return;
-      let command = message.content.split(" ")[0];
-      command = command.slice(prefix.length);
-        if(command === "skin") {
-                const args = message.content.split(" ").slice(1).join(" ")
-        if (!args) return message.channel.send("** Type your skin name **");
-        const image = new Discord.Attachment(`https://visage.surgeplay.com/full/256/${args}`, "skin.png");
-    message.channel.send(image)
-        }
-    });
-
-    client.on('message', ra3d => {
-      var prefix = "-";
-                              let args = ra3d.content.split(" ").slice(1).join(" ")
-      if(ra3d.content.startsWith(prefix + 'ccolors')) {
-          if(!args) return ra3d.channel.send('`يرجي اختيار كم لون `');
-                   if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**'); 
-                    ra3d.channel.send(`**✅ |Created __${args}__ Colors**`);
-                        setInterval(function(){})
-                          let count = 0;
-                          let ecount = 0;
-                for(let x = 1; x < `${parseInt(args)+1}`; x++){
-                  ra3d.guild.createRole({name:x,
-                    color: 'RANDOM'})
-                    }
-                  }
-             });
-
-             const adminprefix = "-a";
-const devs = ['500640587888984084'];
 client.on('message', message => {
-  var argresult = message.content.split(` `).slice(1).join(' ');
-    if (!devs.includes(message.author.id)) return;
-    
-if (message.content.startsWith(adminprefix + 'setgame')) {
-  client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
-} else 
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then
-    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
-return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
-} else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      } else     
-if (message.content.startsWith(adminprefix + 'setT')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");
-    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
+    if (message.content.startsWith("-id")) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setColor('RANDOM')
+            .setTitle('``INFO Name Bot`` ')
+            .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
+            .addField('``servers``', [client.guilds.size], true) 
+            .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
+            .addField('``My ID``' , `[ ${client.user.id} ]` , true)
+            .addField("``Your Name``", `${message.author.username}`)
+            .addField('``your tag``', message.author.discriminator)
+            .addField('``Your id``', message.author.id)
+            .addField('``Bot``', message.author.bot)
+            .addField('``date of registration``', message.author.createdAt)
+    })
 }
-});
-
-let points = JSON.parse(fs.readFileSync('./Data/fkkPTS.json', 'utf8'));
-const prefix = "-";//البريفكس
-
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-	points: 0,
-  };
-if (message.content.startsWith(prefix + 'فكك')) {
-	if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-
-const type = require('./Data/fkk.json');
-const item = type[Math.floor(Math.random() * type.length)];
-const filter = response => {
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**لديك 15 ثانيه لتفكيك الكلمه**').then(msg => {
-
-			
-msg.channel.send(`${item.type}`).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-		message.channel.send(`${collected.first().author} ✅ **احسنت لقد تمكنت من تفكيك الكلمه بسرعه**`);
-		console.log(`[Typing] ${collected.first().author} typed the word.`);
-            let won = collected.first().author;
-            points[won.id].points++;
-          })
-          .catch(collected => {
-            message.channel.send(`:x: **لم يتمكن احد من تفكيك الكلمه في الوقت المناسب**`);
-			console.log('[Typing] Error: No one type the word.');
-          })
-		})
-	})
-}
-});
-client.on('message', message => {
-if (message.content.startsWith(prefix + 'نقاطي')) {
-	if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-	let userData = points[message.author.id];
-	let embed = new Discord.RichEmbed()
-    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-	.setColor('#000000')
-	.setDescription(`نقاطك: \`${userData.points}\``)
-	message.channel.sendEmbed(embed)
-  }
-  fs.writeFile("./Data/fkkPTS.json", JSON.stringify(points), (err) => {
-    if (err) console.error(err)
-  })
 });
 
 
