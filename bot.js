@@ -313,7 +313,7 @@ he tru to hake the server${channel.guild.name}`)
 
   client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
-  return channel.send(` **Welcome to Rezfix Server.** `) 
+  return channel.send(` **Welcome to Rulom. :rulom: ** `) 
 }).catch(console.error)
 })
 
@@ -524,7 +524,6 @@ if (!message.content.startsWith(prefix)) return;
         let reason = message.content.split(" ").slice(2).join(" ");
         const muteembed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setAuthor(Warned!, user.displayAvatarURL)
         .setThumbnail(user.displayAvatarURL)
         .addField("busts_in_silhouette  المستخدم",  '[ ' + ${user.tag} + ' ]',true)
         .addField("hammer  تم بواسطة ", '[ ' + ${message.author.tag} + ' ]',true)
@@ -532,7 +531,6 @@ if (!message.content.startsWith(prefix)) return;
         .addField("User", user, true)
         message.channel.send({embed : muteembed});
         var muteembeddm = new Discord.RichEmbed()
-        .setAuthor(Warned!, user.displayAvatarURL)
         .setDescription(${user} تم اعطائك تحذير
 ${message.author.tag}  بواسطة
 [ ${reason} ] : السبب
