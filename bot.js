@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    client.user.setGame('RezfixServer -Help for Help','https://www.twitch.tv/RezfixServer');
+    client.user.setGame('Reloum Bot.!','https://www.twitch.tv/RezfixServer');
     console.log('---------------');
     console.log('!!. Online')
     console.log('---------------')
@@ -342,17 +342,6 @@ client.on('ready', () => {
   });
 });
 
-client.on('guildMemberAdd', member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    invites[member.guild.id] = guildInvites;
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "rezfix");
-    logChannel.send(`By: <@${inviter.id}>`);
-  });
-});
-
     client.on('message', ra3d => {
       var prefix = "-";
                               let args = ra3d.content.split(" ").slice(1).join(" ")
@@ -370,18 +359,23 @@ client.on('guildMemberAdd', member => {
                   }
              });
 
-    client.on("message", message => {
-    var prefix = "-"
-    if (!message.content.startsWith(prefix)) return;
-      let command = message.content.split(" ")[0];
-      command = command.slice(prefix.length);
-        if(command === "skin") {
-                const args = message.content.split(" ").slice(1).join(" ")
-        if (!args) return message.channel.send("** Type your skin name **");
-        const image = new Discord.Attachment(`https://visage.surgeplay.com/full/256/${args}`, "skin.png");
-    message.channel.send(image)
-        }
+client.on('message',async message => {
+  if(message.content.startsWith("-setvoice")) {
+  if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
+  message.channel.send('✅| **تم عمل الروم بنجاح**');
+  message.guild.createChannel(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]` , 'voice').then(c => {
+    console.log(`Voice online channel setup for guild: \n ${message.guild.name}`);
+    c.overwritePermissions(message.guild.id, {
+      CONNECT: false,
+      SPEAK: false
     });
+    setInterval(() => {
+      c.setName(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]`)
+    },1000);
+  });
+  }
+});
     
 client.on("message", message => {
 	var prefix = "-";
@@ -512,6 +506,42 @@ client.on('message', message => {
     })
 }
 });
+
+client.on('message', async message =>{
+  if (message.author.boss) return;
+    var prefix = "-";
+
+if (!message.content.startsWith(prefix)) return;
+    let command = message.content.split(" ")[0];
+     command = command.slice(prefix.length);
+    let args = message.content.split(" ").slice(1);
+    if (command == "warn") {
+        if (!message.channel.guild) return;
+        if(!message.guild.roles.find(r => r.name === 'warns')); // <@500640587888984084>
+        if(!message.guild.roles.find(r => r.name === 'warns')); // <@500640587888984084>
+        let user = message.mentions.users.first();
+        if (message.mentions.users.size < 1) return message.reply(' يجب عليك المنشن اولاً ').then(msg => {msg.delete(5000)});
+        let reason = message.content.split(" ").slice(2).join(" ");
+        const muteembed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor(Warned!, user.displayAvatarURL)
+        .setThumbnail(user.displayAvatarURL)
+        .addField("busts_in_silhouette  المستخدم",  '[ ' + ${user.tag} + ' ]',true)
+        .addField("hammer  تم بواسطة ", '[ ' + ${message.author.tag} + ' ]',true)
+        .addField("book  السبب", '[ ' + ${reason} + ' ]',true)
+        .addField("User", user, true)
+        message.channel.send({embed : muteembed});
+        var muteembeddm = new Discord.RichEmbed()
+        .setAuthor(Warned!, user.displayAvatarURL)
+        .setDescription(${user} تم اعطائك تحذير
+${message.author.tag}  بواسطة
+[ ${reason} ] : السبب
+اتمنى ان لا يتكرر هذا الغلط مجددا)
+        .setFooter(${message.guild.name})
+        .setColor("RANDOM")
+    user.send( muteembeddm);
+  }
+  });
 
 
 client.login(process.env.BOT_TOKEN);
