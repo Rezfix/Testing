@@ -583,16 +583,6 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
     }
 });
 
-client.on('message', message => {
-        if (message.content.startWith(prefix + "unban all")){
-    if(!message.channel.guild) return;
-     message.guild.members.forEach( member => {
-         
-         member.unban()
-     })
-}
-});
-
 client.on("message", async message => { //حقوق سوبريم
     const args = message.content.slice(prefix.length).trim().split(/ +/g); //حقوق سوبريم
     const command = args.shift().toLowerCase();  //حقوق سوبريم
