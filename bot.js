@@ -297,28 +297,6 @@ client.on('guildBanAdd', (guild, user) => {
         logChannel.send(banInfo);
     })
 });
-client.on('guildBanRemove', (guild, user) => {
-    if(!guild.member(client.user).hasPermission('EMBED_LINKS')) return;
-    if(!guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
- 
-    var logChannel = guild.channels.find(c => c.name === 'log');
-    if(!logChannel) return;
- 
-    guild.fetchAuditLogs().then(logs => {
-        var userID = logs.entries.first().executor.id;
-        var userAvatar = logs.entries.first().executor.avatarURL;
- 
-        let unBanInfo = new Discord.RichEmbed()
-        .setTitle('**[UNBANNED]**')
-        .setThumbnail(userAvatar)
-        .setColor('GREEN')
-        .setDescription(`**\n**:unlock: Successfully \`\`UNBANNED\`\` **${user.username}** From the server\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${userID}> (ID: ${userID})`)
-        .setTimestamp()
-        .setFooter(guild.name, guild.iconURL)
- 
-        logChannel.send(unBanInfo);
-    })
-});
 client.on('guildUpdate', (oldGuild, newGuild) => {
  
     if(!oldGuild.member(client.user).hasPermission('EMBED_LINKS')) return;
